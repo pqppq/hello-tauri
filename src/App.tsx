@@ -2,6 +2,7 @@ import { useState } from "react";
 import reactLogo from "./assets/react.svg";
 import { invoke } from "@tauri-apps/api/tauri";
 import { emit, listen } from "@tauri-apps/api/event";
+import { ask, message } from "@tauri-apps/api/dialog"
 import "./App.css";
 
 function App() {
@@ -59,6 +60,18 @@ function App() {
 							theMessage: "Tauri is awesome!"
 						})
 					}}>emit event</button>
+			</div>
+			<div>
+				<button id='ask'
+					onClick={() => {
+						ask("Are you sure?", "Tauri")
+					}}>ask</button>
+			</div>
+			<div>
+				<button id='ask'
+					onClick={() => {
+						message("Tauri is awesome", "Tauri")
+					}}>message</button>
 			</div>
 		</div>
 	);

@@ -15,14 +15,22 @@
       "shell": {
         "all": false,
         "open": true
+      },
+      "dialog": {
+        "all": true,
+        "ask": true,
+        "confirm": true,
+        "message": true,
+        "open": true,
+        "save": true
       }
     },
     "windows": [
-      {
-        "label": "external",
-        "title": "Tauri Docs",
-        "url": "https://tauri.app"
-      },
+      // {
+      //   "label": "external",
+      //   "title": "Tauri Docs",
+      //   "url": "https://tauri.app"
+      // },
       {
         "label": "local",
         "title": "Tauri",
