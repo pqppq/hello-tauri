@@ -4,6 +4,7 @@ import { invoke } from "@tauri-apps/api/tauri";
 import { emit, listen } from "@tauri-apps/api/event";
 import { ask, message } from "@tauri-apps/api/dialog"
 import "./App.css";
+import { writeText } from "@tauri-apps/api/clipboard";
 
 function App() {
 	const [greetMsg, setGreetMsg] = useState("");
@@ -68,10 +69,16 @@ function App() {
 					}}>ask</button>
 			</div>
 			<div>
-				<button id='ask'
+				<button id='message'
 					onClick={() => {
 						message("Tauri is awesome", "Tauri")
 					}}>message</button>
+			</div>
+			<div>
+				<button id='copy'
+					onClick={() => {
+						writeText("Tauri is awesome!")
+					}}>copy to clipboard</button>
 			</div>
 		</div>
 	);
