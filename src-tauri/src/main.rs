@@ -3,6 +3,11 @@
 
 use tauri::Manager;
 
+#[derive(Clone, serde::Serialize)]
+struct Payload {
+    message: String,
+}
+
 // Learn more about Tauri commands at https://tauri.app/v1/guides/features/command
 #[tauri::command]
 fn greet(name: &str) -> String {
@@ -11,7 +16,7 @@ fn greet(name: &str) -> String {
 
 fn main() {
     tauri::Builder::default()
-        // only include this code on debug build
+        // only include this code on debug builds
         // .setup(|app| {
         //     #[cfg(debug_assertions)]
         //     {
@@ -21,6 +26,21 @@ fn main() {
         //     }
         //     Ok(())
         // })
+        .setup(|app| {
+            let id = app.listen_global("click", |event| {
+                println!("got click with payload {:?}", event.payload());
+            });
+            // app.unlisten(id);
+
+            app.emit_all(
+                "click",
+                Payload {
+                    message: "Tauri is awesome!".into(),
+                },
+            )
+            .unwrap();
+            Ok(())
+        })
         .invoke_handler(tauri::generate_handler![greet])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
