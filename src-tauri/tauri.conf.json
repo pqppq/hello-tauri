@@ -19,9 +19,14 @@
     },
     "windows": [
       {
-        "title": "tauri-app",
-        "width": 800,
-        "height": 600
+        "label": "external",
+        "title": "Tauri Docs",
+        "url": "https://tauri.app"
+      },
+      {
+        "label": "local",
+        "title": "Tauri",
+        "url": "index.html"
       }
     ],
     "security": {
