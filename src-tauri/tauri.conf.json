@@ -1,11 +1,12 @@
 {
   "build": {
-    "devPath": "../src",
-    "distDir": "../src",
-    "withGlobalTauri": true
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist"
   },
   "package": {
-    "productName": "hello-tauri",
+    "productName": "tauri-app",
     "version": "0.0.0"
   },
   "tauri": {
@@ -18,7 +19,7 @@
     },
     "windows": [
       {
-        "title": "hello-tauri",
+        "title": "tauri-app",
         "width": 800,
         "height": 600
       }
